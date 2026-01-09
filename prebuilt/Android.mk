@@ -13,6 +13,6 @@ LOCAL_HOST_REQUIRED_MODULES := depmod
         mkdir -p $(TARGET_RECOVERY_ROOT_OUT)/vendor; \
         cp -rf $(LOCAL_PATH)/$(PRODUCT_RELEASE_NAME)/vendor $(TARGET_RECOVERY_ROOT_OUT)/; \
         echo "Running depmod for nebula_prebuilt"; \
-        $(DEPMOD) -b $(TARGET_RECOVERY_ROOT_OUT)/vendor 1.1;
+        $(DEPMOD) -b $(TARGET_RECOVERY_ROOT_OUT)/vendor;
 
 include $(BUILD_PHONY_PACKAGE)
