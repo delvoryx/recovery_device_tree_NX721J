@@ -49,11 +49,14 @@ BOARD_DTB_OFFSET := 0x01f00000
 BOARD_BOOTCONFIG := bootconfig
 TARGET_KERNEL_CLANG_COMPILE   := true
 TARGET_PREBUILT_KERNEL        := $(DEVICE_PATH)/prebuilt/kernel
-TARGET_PREBUILT_DTB           := $(DEVICE_PATH)/prebuilt/dtb.img
-BOARD_INCLUDE_DTB_IN_BOOTIMG  := true
 BOARD_MKBOOTIMG_ARGS          += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS          += --pagesize $(BOARD_KERNEL_PAGESIZE)
 BOARD_KERNEL_CMDLINE          := video=vfb:640x400,bpp=32,memsize=3072000 nosoftlockup
+
+# dtb
+BOARD_INCLUDE_DTB_IN_BOOTIMG  := true
+BOARD_PREBUILT_DTBIMAGE_DIR   := $(DEVICE_PATH)/prebuilt
+TARGET_PREBUILT_DTB           := $(DEVICE_PATH)/prebuilt/dtb.img
 
 # Ramdisk use lz4
 BOARD_RAMDISK_USE_LZ4 := true
