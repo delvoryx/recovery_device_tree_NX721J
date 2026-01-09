@@ -9,10 +9,16 @@ LOCAL_MODULE_PATH := $(TARGET_RECOVERY_ROOT_OUT)
 
 LOCAL_HOST_REQUIRED_MODULES := depmod
 
-    LOCAL_POST_INSTALL_CMD += \
-        mkdir -p $(TARGET_RECOVERY_ROOT_OUT)/vendor; \
-        cp -rf $(LOCAL_PATH)/$(PRODUCT_RELEASE_NAME)/vendor $(TARGET_RECOVERY_ROOT_OUT)/; \
-        echo "Running depmod for nebula_prebuilt"; \
-        $(DEPMOD) -b $(TARGET_RECOVERY_ROOT_OUT)/vendor;
+PREBUILT_VENDOR_DIR := $(LOCAL_PATH)/NX721J/vendor
+
+LOCAL_POST_INSTALL_CMD := \
+    mkdir -p $(TARGET_RECOVERY_ROOT_OUT)/vendor/lib/modules; \
+    if [ -d $(PREBUILT_VENDOR_DIR)/lib/modules ]; then \
+        cp -rf $(PREBUILT_VENDOR_DIR)/lib/modules/*.ko $(TARGET_RECOVERY_ROOT_OUT)/vendor/lib/modules/; \
+    fi; \
+    mkdir -p $(TARGET_RECOVERY_ROOT_OUT)/vendor/firmware; \
+    if [ -d $(PREBUILT_VENDOR_DIR)/firmware ]; then \
+        cp -rf $(PREBUILT_VENDOR_DIR)/firmware/* $(TARGET_RECOVERY_ROOT_OUT)/vendor/firmware/; \
+    fi
 
 include $(BUILD_PHONY_PACKAGE)
