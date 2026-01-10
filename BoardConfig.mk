@@ -52,7 +52,7 @@ TARGET_PREBUILT_KERNEL        := $(DEVICE_PATH)/prebuilt/kernel
 BOARD_MKBOOTIMG_ARGS          += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS          += --pagesize $(BOARD_KERNEL_PAGESIZE)
 BOARD_MKBOOTIMG_ARGS          += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
-BOARD_MKBOOTIMG_ARGS          += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
+BOARD_MKBOOTIMG_ARGS          += --tags_offset $(BOARD_TAGS_OFFSET)
 BOARD_KERNEL_CMDLINE          := video=vfb:640x400,bpp=32,memsize=3072000 nosoftlockup
 
 # dtb
