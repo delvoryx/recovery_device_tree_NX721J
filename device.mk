@@ -27,13 +27,20 @@ PRODUCT_PACKAGES += \
     update_engine_client \
     update_verifier \
     update_engine_sideload  \
+    qcom_decrypt \
+    qcom_decrypt_fbe \
+    
+PRODUCT_PACKAGES += \
     android.hardware.boot-service.qti \
     android.hardware.boot-service.qti.recovery \
-    qcom_decrypt \
-    qcom_decrypt_fbe
+    android.hardware.gatekeeper\
+    android.hardware.gatekeeper@1.0.vendor \
+    android.hardware.keymaster@4.1.vendor \
+    android.hardware.confirmationui@1.0.vendor
+
 
 # SHIPPING API
-PRODUCT_SHIPPING_API_LEVEL := 32
+PRODUCT_SHIPPING_API_LEVEL := 34
 
 # VNDK API
 PRODUCT_TARGET_VNDK_VERSION := 34
