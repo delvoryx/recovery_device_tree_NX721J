@@ -45,27 +45,27 @@ on fs
     mount ext4 /dev/block/by-name/persist /persist rw
     mkdir /persist/OFRPFox
 
-service keymaster-4-0-qti /system/bin/android.hardware.keymaster@4.0-service-qti
-    user root
-    group root
-    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
-    disabled
-    oneshot
-    seclabel u:r:recovery:s0
+#service keymaster-4-0-qti /system/bin/android.hardware.keymaster@4.0-service-qti
+#    user root
+#    group root
+#    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
+#    disabled
+#    oneshot
+#    seclabel u:r:recovery:s0
     
-service overrideprops /system/bin/overrideprops.sh
-    user root
-    group root
-    disabled
-    oneshot
-    seclabel u:r:recovery:s0
+#service overrideprops /system/bin/overrideprops.sh
+#    user root
+#    group root
+#    disabled
+#    oneshot
+#    seclabel u:r:recovery:s0
 
-service prepdecrypt /system/bin/prepdecrypt.sh
-    user root
-    group root
-    disabled
-    oneshot
-    seclabel u:r:recovery:s0
+#service prepdecrypt /system/bin/prepdecrypt.sh
+#    user root
+#    group root
+#    disabled
+#    oneshot
+#    seclabel u:r:recovery:s0
 
 on boot
     setprop sys.usb.config adb
@@ -74,33 +74,67 @@ on boot
 on post-fs-data
     mkdir /data/vendor/secure_element 0777 system system
 
-on property:ro.crypto.state=encrypted && property:ro.boot.dynamic_partitions=true
-    start prepdecrypt
+#on property:ro.crypto.state=encrypted && property:ro.boot.dynamic_partitions=true
+#    start prepdecrypt
 
-on property:crypto.ready=1 && property:hwservicemanager.ready=true
+#on property:crypto.ready=1 && property:hwservicemanager.ready=true
+#    start vendor.qseecomd
+#    start vendor.keymint-qti
+#    start vendor.secure_element
+#    start vendor.weaver_nxp
+
+#on property:sys.listeners.registered=true && property:keymaster_ver=4.0
+#    start keymaster-4-0-qti
+
+#on property:ro.crypto.type=block && property:ro.crypto.fs_crypto_blkdev=*
+#    setprop crypto.ready 0
+#    stop vendor.qseecomd
+#    stop keymaster-4-0-qti
+
+#on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
+#    install_keyring
+
+#on property:vendor.sys.listeners.registered=true
+#    start vendor.gatekeeper_default
+
+#on property:twrp.all.users.decrypted=true
+#    setprop crypto.ready 0
+#    stop vendor.qseecomd
+#    stop vendor.keymint-qti
+#    stop keymaster-4-0-qti
+#    stop vendor.secure_element
+#    stop vendor.weaver_nxp
+
+service vendor.keymint-qti /vendor/bin/hw/android.hardware.security.keymint-service-qti
+    class early_hal
+    user root
+    group root drmrpc
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
+    disabled
+    seclabel u:r:recovery:s0
+
+service vendor.gatekeeper /vendor/bin/hw/android.hardware.gatekeeper-service-qti
+    class late_hal
+    user root
+    group root
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
+    disabled
+    seclabel u:r:recovery:s0
+
+service vendor.qseecomd /vendor/bin/qseecomd
+    class core
+    user root
+    group root
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
+    disabled
+    seclabel u:r:recovery:s0
+
+on property:hwservicemanager.ready=true
     start vendor.qseecomd
     start vendor.keymint-qti
-    start vendor.secure_element
-    start vendor.weaver_nxp
+    start vendor.gatekeeper
 
-on property:sys.listeners.registered=true && property:keymaster_ver=4.0
-    start keymaster-4-0-qti
-
-on property:ro.crypto.type=block && property:ro.crypto.fs_crypto_blkdev=*
-    setprop crypto.ready 0
-    stop vendor.qseecomd
-    stop keymaster-4-0-qti
-
-on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
-    install_keyring
-
-on property:vendor.sys.listeners.registered=true
-    start vendor.gatekeeper_default
-
-on property:twrp.all.users.decrypted=true
-    setprop crypto.ready 0
-    stop vendor.qseecomd
-    stop vendor.keymint-qti
-    stop keymaster-4-0-qti
-    stop vendor.secure_element
-    stop vendor.weaver_nxp
+on property:ro.crypto.state=encrypted
+    start vendor.qseecomd
+    start vendor.keymint-qti
+    start vendor.gatekeeper
