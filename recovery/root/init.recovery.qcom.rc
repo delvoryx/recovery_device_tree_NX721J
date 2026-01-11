@@ -27,6 +27,9 @@
 
 on init
     start boot-hal-1-2
+    chmod 0755 /vendor/bin/linker64_qti
+    chmod 0755 /vendor/bin/qseecomd
+    chmod 0755 /vendor/bin/hw/android.hardware.security.keymint-service-qti
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
@@ -107,7 +110,15 @@ on post-fs-data
 #    stop vendor.secure_element
 #    stop vendor.weaver_nxp
 
-service vendor.keymint-qti /vendor/bin/hw/android.hardware.security.keymint-service-qti
+service vendor.qseecomd /vendor/bin/linker64_qti /vendor/bin/qseecomd
+    class core
+    user root
+    group root
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
+    disabled
+    seclabel u:r:recovery:s0
+
+service vendor.keymint-qti /vendor/bin/linker64_qti /vendor/bin/hw/android.hardware.security.keymint-service-qti
     class early_hal
     user root
     group root drmrpc
@@ -117,14 +128,6 @@ service vendor.keymint-qti /vendor/bin/hw/android.hardware.security.keymint-serv
 
 service vendor.gatekeeper /vendor/bin/hw/android.hardware.gatekeeper-service-qti
     class late_hal
-    user root
-    group root
-    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
-    disabled
-    seclabel u:r:recovery:s0
-
-service vendor.qseecomd /vendor/bin/qseecomd
-    class core
     user root
     group root
     setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
