@@ -41,6 +41,10 @@ PRODUCT_PACKAGES += \
     android.hardware.security.sharedsecret-V1-ndk.vendor \
     android.hardware.security.secureclock-V1-ndk.vendor \
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/recovery/root/vendor/bin/linker64_qti:$(TARGET_RECOVERY_ROOT_OUT)/vendor/bin/linker64_qti \
+    $(LOCAL_PATH)/recovery/root/vendor/lib64/libapexsupport.so:$(TARGET_RECOVERY_ROOT_OUT)/vendor/lib64/libapexsupport.so \
+    $(LOCAL_PATH)/recovery/root/vendor/lib64/libc++.so:$(TARGET_RECOVERY_ROOT_OUT)/vendor/lib64/libc++.so
 
 # SHIPPING API
 PRODUCT_SHIPPING_API_LEVEL := 32
