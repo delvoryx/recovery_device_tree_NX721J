@@ -69,7 +69,6 @@ on fs
 
 on boot
     setprop sys.usb.config adb
-    start overrideprops
     start vendor.qseecomd
     start vendor.keymint-qti
     start vendor.gatekeeper
