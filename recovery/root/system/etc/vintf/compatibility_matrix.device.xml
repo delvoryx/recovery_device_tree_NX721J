@@ -1,6 +1,7 @@
 <!--
     Input:
         vendor/qcom/opensource/core-utils/vendor_framework_compatibility_matrix.xml
+        vendor/zte/imagelib/laser_cerro/config/compatibility-matrix.xml
         vendor/zte/audio_ext/btaudio_intermediate/compatibility-matrix.xml
         vendor/zte/fingerprint/fingerprint_system/framework_comp_matrix/ifaaaidl_framework_comp_matrix.xml
         vendor/zte/fingerprint/fingerprint_system/framework_comp_matrix/gf95xx_framework_comp_matrix_aidl.xml
@@ -1721,6 +1722,14 @@
         <interface>
             <name>ITransfer</name>
             <instance>vendor_zte/0</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.zte.hardware.laser</name>
+        <version>1.0</version>
+        <interface>
+            <name>ILaser</name>
+            <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">

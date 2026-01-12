@@ -99,6 +99,7 @@ repeater-qti-pmic-eusb2.ko
 redriver.ko
 nb7vpq904m.ko
 zte_fingerprint.ko
+ah1898_hall.ko
 pm8941-pwrkey.ko
 qcom-hv-haptics.ko
 i2c-msm-geni.ko
@@ -151,8 +152,6 @@ zte_misc.ko
 zte_power_supply.ko
 zte_tpd.ko
 zlog_test_dlkm.ko
-soc_fan.ko
-aw9620x.ko
 slimbus.ko
 slim-qcom-ngd-ctrl.ko
 coresight.ko

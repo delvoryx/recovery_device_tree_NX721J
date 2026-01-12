@@ -56,7 +56,6 @@ alias of:N*T*Cqcom,qfprom-sysC* qfprom_sys
 alias of:N*T*Cqcom,ufs-phy-qmp-v4-waipio phy_qcom_ufs_qmp_v4_waipio
 alias of:N*T*Cqcom,ufs-phy-qmp-v4-waipioC* phy_qcom_ufs_qmp_v4_waipio
 alias i2c:max31760 max31760_fan
-alias i2c:aw9620x_sar aw9620x
 alias platform:geni_i3c_master i3c_master_msm_geni
 alias of:N*T*Cqcom,geni-i3c i3c_master_msm_geni
 alias of:N*T*Cqcom,geni-i3cC* i3c_master_msm_geni
@@ -482,6 +481,7 @@ alias of:N*T*Cqcom,i2c-geniC* i2c_msm_geni
 alias platform:sys_pm_vx sys_pm_vx
 alias char-major-21-* sg
 alias usbfunc:cser usb_f_cdev
+alias platform:hall-sensor ah1898_hall
 alias amba:d???F0C?? coresight_trace_noc
 alias platform:spmi-temp-alarm qcom_spmi_temp_alarm
 alias of:N*T*Cqcom,spmi-temp-alarm qcom_spmi_temp_alarm

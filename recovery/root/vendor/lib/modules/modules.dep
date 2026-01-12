@@ -42,7 +42,6 @@
 /vendor/lib/modules/max31760_fan.ko:
 /vendor/lib/modules/thermal_config.ko:
 /vendor/lib/modules/gh_ctrl.ko:
-/vendor/lib/modules/aw9620x.ko:
 /vendor/lib/modules/qcom_iommu_debug.ko:
 /vendor/lib/modules/i3c-master-msm-geni.ko:
 /vendor/lib/modules/qcom_ramdump.ko:
@@ -139,6 +138,7 @@
 /vendor/lib/modules/q6_dlkm.ko:
 /vendor/lib/modules/qsee_ipc_irq_bridge.ko: /vendor/lib/modules/rproc_qcom_common.ko /vendor/lib/modules/qcom_smd.ko /vendor/lib/modules/qcom_glink_smem.ko /vendor/lib/modules/qcom_glink.ko
 /vendor/lib/modules/usb_f_cdev.ko:
+/vendor/lib/modules/ah1898_hall.ko:
 /vendor/lib/modules/panel_event_notifier.ko:
 /vendor/lib/modules/coresight-trace-noc.ko: /vendor/lib/modules/coresight.ko
 /vendor/lib/modules/wcd938x_slave_dlkm.ko: /vendor/lib/modules/swr_dlkm.ko
@@ -234,7 +234,6 @@
 /vendor/lib/modules/wcd9xxx_dlkm.ko: /vendor/lib/modules/audio_prm_dlkm.ko /vendor/lib/modules/spf_core_dlkm.ko /vendor/lib/modules/gpr_dlkm.ko /vendor/lib/modules/snd_event_dlkm.ko /vendor/lib/modules/q6_notifier_dlkm.ko /vendor/lib/modules/q6_pdr_dlkm.ko /vendor/lib/modules/pdr_interface.ko /vendor/lib/modules/qmi_helpers.ko /vendor/lib/modules/rproc_qcom_common.ko /vendor/lib/modules/qcom_smd.ko /vendor/lib/modules/qcom_glink_smem.ko /vendor/lib/modules/qcom_glink.ko
 /vendor/lib/modules/f_fs_ipc_log.ko:
 /vendor/lib/modules/wlan_firmware_service.ko: /vendor/lib/modules/qmi_helpers.ko
-/vendor/lib/modules/soc_fan.ko:
 /vendor/lib/modules/cpucp_log.ko:
 /vendor/lib/modules/qti_battery_charger.ko: /vendor/lib/modules/panel_event_notifier.ko /vendor/lib/modules/pmic_glink.ko /vendor/lib/modules/pdr_interface.ko /vendor/lib/modules/qmi_helpers.ko /vendor/lib/modules/zte_power_supply.ko /vendor/lib/modules/rproc_qcom_common.ko /vendor/lib/modules/qcom_smd.ko /vendor/lib/modules/qcom_glink_smem.ko /vendor/lib/modules/qcom_glink.ko /vendor/lib/modules/zte_misc.ko
 /vendor/lib/modules/st54jese.ko:
