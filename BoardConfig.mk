@@ -59,13 +59,11 @@ BOARD_KERNEL_CMDLINE          := video=vfb:640x400,bpp=32,memsize=3072000 nosoft
 BOARD_INCLUDE_DTB_IN_BOOTIMG  := true
 BOARD_PREBUILT_DTBIMAGE_DIR   := $(DEVICE_PATH)/prebuilt
 TARGET_PREBUILT_DTB           := $(DEVICE_PATH)/prebuilt/dtb.img
-BOARD_MKBOOTIMG_ARGS          += --dtb $(TARGET_PREBUILT_DTB)
 
 # dtbo
 BOARD_INCLUDE_DTBO_IN_BOOTIMG  := true
 BOARD_PREBUILT_DTBOIMAGE_DIR   := $(DEVICE_PATH)/prebuilt
 BOARD_PREBUILT_DTBOIMAGE       := $(DEVICE_PATH)/prebuilt/dtbo.img
-BOARD_MKBOOTIMG_ARGS           += --dtbo $(BOARD_PREBUILT_DTBOIMAGE)
 
 # Ramdisk use lz4
 BOARD_RAMDISK_USE_LZ4 := true
