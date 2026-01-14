@@ -72,9 +72,9 @@ on fs
 
 on boot
     setprop sys.usb.config adb
-    #start vendor.qseecomd
-    #start vendor.keymint-qti
-    #start vendor.gatekeeper
+    start vendor.qseecomd
+    start vendor.keymint-qti
+    start vendor.gatekeeper
 
 on post-fs-data
     mkdir /data/vendor/secure_element 0777 system system
@@ -114,7 +114,7 @@ service vendor.qseecomd /vendor/bin/linker64_qti /vendor/bin/qseecomd
     class core
     user root
     group root
-    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/sbin
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/sbin
     disabled
     seclabel u:r:recovery:s0
 
@@ -122,7 +122,7 @@ service vendor.keymint-qti /vendor/bin/linker64_qti /vendor/bin/hw/android.hardw
     class early_hal
     user root
     group root drmrpc
-    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/sbin
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/sbin
     disabled
     seclabel u:r:recovery:s0
 
@@ -130,7 +130,7 @@ service vendor.gatekeeper /vendor/bin/linker64_qti /vendor/bin/hw/android.hardwa
     class late_hal
     user root
     group root
-    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/sbin
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/sbin
     disabled
     seclabel u:r:recovery:s0
 
