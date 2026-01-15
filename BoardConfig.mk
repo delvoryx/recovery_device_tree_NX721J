@@ -169,7 +169,7 @@ TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_MAX_BRIGHTNESS := 2047
 TW_DEFAULT_BRIGHTNESS := 500
 TW_EXTRA_LANGUAGES := true
-TW_EXCLUDE_APEX := true
+TW_EXCLUDE_APEX := false
 TW_HAS_EDL_MODE := true
 
 # Haptic
